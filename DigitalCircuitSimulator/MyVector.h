@@ -1,9 +1,10 @@
 #ifndef MYVECTOR_H
 #define MYVECTOR_H
 
+template <typename T>
 class MyVector {
 private:
-    int* arr;
+    T* arr;
     int len;
     int cap;
 
@@ -12,23 +13,23 @@ private:
 public:
     // Constructors & Destructor
     MyVector();
-    MyVector(int count, int value);
+    MyVector(int count, const T& value);
     MyVector(const MyVector& other);
     ~MyVector();
 
     // Operators
     MyVector& operator=(const MyVector& other);
-    int& operator[](int index);
-    const int& operator[](int index) const;
+    T& operator[](int index);
+    const T& operator[](int index) const;
     bool operator==(const MyVector& other) const;
     bool operator!=(const MyVector& other) const;
     MyVector operator+(const MyVector& other) const;
     MyVector& operator+=(const MyVector& other);
 
     // Modifiers
-    void push(int value);
+    void push(const T& value);
     void pop();
-    void insert_at(int index, int value);
+    void insert_at(int index, const T& value);
     void delete_at(int index);
     void reserve(int new_capacity);
     void clear();
@@ -39,13 +40,16 @@ public:
     // Accessors
     bool empty() const;
     int size() const;
-    int& at(int index);
-    const int& at(int index) const;
-    int& front();
-    const int& front() const;
-    int& back();
-    const int& back() const;
-    int find(int value) const;
+    T& at(int index);
+    const T& at(int index) const;
+    T& front();
+    const T& front() const;
+    T& back();
+    const T& back() const;
+    int find(const T& value) const;
 };
+
+// Implementation must be in header for templates
+#include "MyVector.cpp"
 
 #endif

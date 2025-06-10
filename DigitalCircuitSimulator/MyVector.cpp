@@ -1,9 +1,13 @@
+#ifndef MYVECTOR_CPP
+#define MYVECTOR_CPP
+
 #include "MyVector.h"
 #include <iostream>
 
-void MyVector::double_capacity() {
+template <typename T>
+void MyVector<T>::double_capacity() {
     int new_cap = (cap == 0) ? 1 : cap * 2;
-    int* new_arr = new int[new_cap];
+    T* new_arr = new T[new_cap];
     for (int i = 0; i < len; i++) {
         new_arr[i] = arr[i];
     }
@@ -13,33 +17,38 @@ void MyVector::double_capacity() {
 }
 
 // Constructors & Destructor
-MyVector::MyVector() : arr(nullptr), len(0), cap(0) {}
+template <typename T>
+MyVector<T>::MyVector() : arr(nullptr), len(0), cap(0) {}
 
-MyVector::MyVector(int count, int value) : len(count), cap(count) {
-    arr = new int[cap];
+template <typename T>
+MyVector<T>::MyVector(int count, const T& value) : len(count), cap(count) {
+    arr = new T[cap];
     for (int i = 0; i < len; i++) {
         arr[i] = value;
     }
 }
 
-MyVector::MyVector(const MyVector& other) : len(other.len), cap(other.cap) {
-    arr = new int[cap];
+template <typename T>
+MyVector<T>::MyVector(const MyVector& other) : len(other.len), cap(other.cap) {
+    arr = new T[cap];
     for (int i = 0; i < len; i++) {
         arr[i] = other.arr[i];
     }
 }
 
-MyVector::~MyVector() {
+template <typename T>
+MyVector<T>::~MyVector() {
     delete[] arr;
 }
 
 // Operators
-MyVector& MyVector::operator=(const MyVector& other) {
+template <typename T>
+MyVector<T>& MyVector<T>::operator=(const MyVector& other) {
     if (this != &other) {
         delete[] arr;
         len = other.len;
         cap = other.cap;
-        arr = new int[cap];
+        arr = new T[cap];
         for (int i = 0; i < len; i++) {
             arr[i] = other.arr[i];
         }
@@ -47,15 +56,18 @@ MyVector& MyVector::operator=(const MyVector& other) {
     return *this;
 }
 
-int& MyVector::operator[](int index) {
+template <typename T>
+T& MyVector<T>::operator[](int index) {
     return arr[index];
 }
 
-const int& MyVector::operator[](int index) const {
+template <typename T>
+const T& MyVector<T>::operator[](int index) const {
     return arr[index];
 }
 
-bool MyVector::operator==(const MyVector& other) const {
+template <typename T>
+bool MyVector<T>::operator==(const MyVector& other) const {
     if (len != other.len) return false;
     for (int i = 0; i < len; i++) {
         if (arr[i] != other.arr[i]) return false;
@@ -63,11 +75,13 @@ bool MyVector::operator==(const MyVector& other) const {
     return true;
 }
 
-bool MyVector::operator!=(const MyVector& other) const {
+template <typename T>
+bool MyVector<T>::operator!=(const MyVector& other) const {
     return !(*this == other);
 }
 
-MyVector MyVector::operator+(const MyVector& other) const {
+template <typename T>
+MyVector<T> MyVector<T>::operator+(const MyVector& other) const {
     MyVector result;
     result.reserve(len + other.len);
     result.len = len + other.len;
@@ -80,7 +94,8 @@ MyVector MyVector::operator+(const MyVector& other) const {
     return result;
 }
 
-MyVector& MyVector::operator+=(const MyVector& other) {
+template <typename T>
+MyVector<T>& MyVector<T>::operator+=(const MyVector& other) {
     int old_len = len;
     len += other.len;
     if (len > cap) {
@@ -93,16 +108,19 @@ MyVector& MyVector::operator+=(const MyVector& other) {
 }
 
 // Modifiers
-void MyVector::push(int value) {
+template <typename T>
+void MyVector<T>::push(const T& value) {
     if (len == cap) double_capacity();
     arr[len++] = value;
 }
 
-void MyVector::pop() {
+template <typename T>
+void MyVector<T>::pop() {
     if (len > 0) len--;
 }
 
-void MyVector::insert_at(int index, int value) {
+template <typename T>
+void MyVector<T>::insert_at(int index, const T& value) {
     if (index < 0 || index > len) return;
 
     if (len == cap) double_capacity();
@@ -114,7 +132,8 @@ void MyVector::insert_at(int index, int value) {
     len++;
 }
 
-void MyVector::delete_at(int index) {
+template <typename T>
+void MyVector<T>::delete_at(int index) {
     if (index < 0 || index >= len) return;
 
     for (int i = index; i < len - 1; i++) {
@@ -123,10 +142,11 @@ void MyVector::delete_at(int index) {
     len--;
 }
 
-void MyVector::reserve(int new_capacity) {
+template <typename T>
+void MyVector<T>::reserve(int new_capacity) {
     if (new_capacity <= cap) return;
 
-    int* new_arr = new int[new_capacity];
+    T* new_arr = new T[new_capacity];
     for (int i = 0; i < len; i++) {
         new_arr[i] = arr[i];
     }
@@ -136,13 +156,15 @@ void MyVector::reserve(int new_capacity) {
     cap = new_capacity;
 }
 
-void MyVector::clear() {
+template <typename T>
+void MyVector<T>::clear() {
     len = 0;
 }
 
-void MyVector::swap(MyVector& other) {
+template <typename T>
+void MyVector<T>::swap(MyVector& other) {
     // Swap pointers
-    int* temp_arr = arr;
+    T* temp_arr = arr;
     arr = other.arr;
     other.arr = temp_arr;
 
@@ -157,10 +179,11 @@ void MyVector::swap(MyVector& other) {
     other.cap = temp_cap;
 }
 
-void MyVector::shrink_to_fit() {
+template <typename T>
+void MyVector<T>::shrink_to_fit() {
     if (cap == len) return;
 
-    int* new_arr = new int[len];
+    T* new_arr = new T[len];
     for (int i = 0; i < len; i++) {
         new_arr[i] = arr[i];
     }
@@ -170,11 +193,12 @@ void MyVector::shrink_to_fit() {
     cap = len;
 }
 
-void MyVector::reverse() {
+template <typename T>
+void MyVector<T>::reverse() {
     int start = 0;
     int end = len - 1;
     while (start < end) {
-        int temp = arr[start];
+        T temp = arr[start];
         arr[start] = arr[end];
         arr[end] = temp;
         start++;
@@ -183,41 +207,52 @@ void MyVector::reverse() {
 }
 
 // Accessors
-bool MyVector::empty() const {
+template <typename T>
+bool MyVector<T>::empty() const {
     return len == 0;
 }
 
-int MyVector::size() const {
+template <typename T>
+int MyVector<T>::size() const {
     return len;
 }
 
-int& MyVector::at(int index) {
+template <typename T>
+T& MyVector<T>::at(int index) {
     return arr[index];
 }
 
-const int& MyVector::at(int index) const {
+template <typename T>
+const T& MyVector<T>::at(int index) const {
     return arr[index];
 }
 
-int& MyVector::front() {
+template <typename T>
+T& MyVector<T>::front() {
     return arr[0];
 }
 
-const int& MyVector::front() const {
+template <typename T>
+const T& MyVector<T>::front() const {
     return arr[0];
 }
 
-int& MyVector::back() {
+template <typename T>
+T& MyVector<T>::back() {
     return arr[len - 1];
 }
 
-const int& MyVector::back() const {
+template <typename T>
+const T& MyVector<T>::back() const {
     return arr[len - 1];
 }
 
-int MyVector::find(int value) const {
+template <typename T>
+int MyVector<T>::find(const T& value) const {
     for (int i = 0; i < len; i++) {
         if (arr[i] == value) return i;
     }
     return -1;
 }
+
+#endif
