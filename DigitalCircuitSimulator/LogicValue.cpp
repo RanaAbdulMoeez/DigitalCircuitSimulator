@@ -1,6 +1,6 @@
 #include "LogicValue.h"
 
-String logic_value_to_string(LogicValue value) {
+string logic_value_to_string(LogicValue value) {
     switch (value) {
     case LogicValue::ZERO:
         return "0";

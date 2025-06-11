@@ -1,6 +1,7 @@
 #ifndef LOGICVALUE_H
 #define LOGICVALUE_H
-#include "String.h"
+#include <string>
+using namespace std;
 
 enum class LogicValue {
 	ZERO = 0,
@@ -8,6 +9,6 @@ enum class LogicValue {
 	X = 2
 };
 
-String logic_value_to_string(LogicValue value);
+string logic_value_to_string(LogicValue value);
 
 #endif
