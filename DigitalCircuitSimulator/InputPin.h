@@ -14,6 +14,7 @@ public:
 	void connect(OutputPin* pin);
 	void disconnect();
 	bool is_connected();
+	LogicValue getValue();
 };
 
 

@@ -29,3 +29,10 @@ bool InputPin::is_connected() {
 	else
 		return true;
 }
+
+LogicValue InputPin::getValue() {
+	if (is_connected())
+		return connection->get_value();
+	else
+		return LogicValue::X;
+}
