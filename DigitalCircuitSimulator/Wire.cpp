@@ -4,8 +4,6 @@ Wire::Wire() : Component(1, 1, string("Wire")) {}
 
 Wire::Wire(const Wire& other) : Component(other) {}
 
-Wire::~Wire() {}
-
 void Wire::resolve_output() {
 	for (int i = 0; i < output_pins.size(); i++) {
 		output_pins[i]->change_value(input_pins[0].getValue());

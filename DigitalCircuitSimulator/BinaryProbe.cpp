@@ -4,8 +4,6 @@ BinaryProbe::BinaryProbe() : Component(1, 0, string("Binary Probe")) {}
 
 BinaryProbe::BinaryProbe(const BinaryProbe& other) : Component(other) {}
 
-BinaryProbe::~BinaryProbe() {}
-
 void BinaryProbe::resolve_output() {}
 
 LogicValue BinaryProbe::get_value() { return input_pins[0].getValue(); }

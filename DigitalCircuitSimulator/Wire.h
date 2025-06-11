@@ -6,7 +6,6 @@ class Wire : public Component {
 public:
 	Wire();
 	Wire(const Wire& other);
-	~Wire();
 	void resolve_output() override;
 	OutputPin* getPin(int idx);
 	void connect(OutputPin* pin);

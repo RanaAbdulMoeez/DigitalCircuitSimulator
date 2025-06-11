@@ -6,8 +6,6 @@ BinarySwitch::BinarySwitch() : Component(0, 1, "Binary Switch") {
 
 BinarySwitch::BinarySwitch(const BinarySwitch& other) : Component(other) {}
 
-BinarySwitch::~BinarySwitch() {}
-
 void BinarySwitch::resolve_output() {}
 
 void BinarySwitch::change_value() {

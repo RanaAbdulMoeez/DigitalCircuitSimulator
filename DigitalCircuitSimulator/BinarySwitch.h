@@ -6,7 +6,6 @@ class BinarySwitch : public Component {
 public:
 	BinarySwitch();
 	BinarySwitch(const BinarySwitch& other);
-	~BinarySwitch();
 	void resolve_output() override;
 	void change_value();
 	LogicValue get_value();
