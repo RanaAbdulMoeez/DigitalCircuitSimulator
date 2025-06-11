@@ -10,7 +10,7 @@ public:
 	void resolve_output() override;
 	void change_value();
 	LogicValue get_value();
-	OutputPin* getPin() { return &output_pins[0]; }
+	OutputPin* getPin();
 };
 
 #endif

@@ -7,7 +7,7 @@ class Component {
 protected:
 	string id;
 	string name;
-	MyVector<OutputPin> output_pins;
+	MyVector<OutputPin*> output_pins;
 	MyVector<InputPin> input_pins;
 	Component(int n_input_pins, int n_output_pins, string _name);
 	Component(const Component& other);
