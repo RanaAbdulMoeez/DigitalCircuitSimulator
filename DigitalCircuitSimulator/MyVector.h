@@ -36,6 +36,7 @@ public:
     void swap(MyVector& other);
     void shrink_to_fit();
     void reverse();
+    void assign_at(int index, const T& value);
 
     // Accessors
     bool empty() const;
@@ -49,7 +50,6 @@ public:
     int find(const T& value) const;
 };
 
-// Implementation must be in header for templates
 #include "MyVector.cpp"
 
 #endif

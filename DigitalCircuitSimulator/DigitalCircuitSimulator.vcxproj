@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AND2.cpp" />
     <ClCompile Include="BinaryProbe.cpp" />
     <ClCompile Include="BinarySwitch.cpp" />
     <ClCompile Include="Circuit.cpp" />
@@ -133,12 +134,15 @@
     <ClCompile Include="LogicGate.cpp" />
     <ClCompile Include="LogicValue.cpp" />
     <ClCompile Include="MyVector.cpp" />
+    <ClCompile Include="NOT.cpp" />
+    <ClCompile Include="OR2.cpp" />
     <ClCompile Include="OutputPin.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Wire.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AND2.h" />
     <ClInclude Include="BinaryProbe.h" />
     <ClInclude Include="BinarySwitch.h" />
     <ClInclude Include="Circuit.h" />
@@ -148,6 +152,8 @@
     <ClInclude Include="LogicGate.h" />
     <ClInclude Include="LogicValue.h" />
     <ClInclude Include="MyVector.h" />
+    <ClInclude Include="NOT.h" />
+    <ClInclude Include="OR2.h" />
     <ClInclude Include="OutputPin.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="String.h" />

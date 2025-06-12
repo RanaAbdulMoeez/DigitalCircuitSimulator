@@ -7,11 +7,12 @@ public:
 	OR2();
 	OR2(const OR2& other);
 	void resolve_output() override;
-	void connect_using_pointer(InputPin* in_pin, OutputPin* out_pin) override;
-	void connect_using_index(int idx, OutputPin* out_pin) override;
-	void disconnect(InputPin* in_pin) override;
 	LogicValue get_value() override;
-	OutputPin* get_pin() override;
+	void connect_input_pin(int idx, OutputPin* out_pin) override;
+	void disconnect_input_pin(int idx) override;
+	OutputPin* get_output_pin(int idx) override;
+	InputPin* get_input_pin(int idx) override;
+	OR2* clone() override;
 };
 
 #endif

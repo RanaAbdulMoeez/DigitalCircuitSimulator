@@ -162,6 +162,12 @@ void MyVector<T>::clear() {
 }
 
 template <typename T>
+void MyVector<T>::assign_at(int index, const T& value) {
+    if (index < 0 || index >= len) return;
+    arr[index] = value;
+}
+
+template <typename T>
 void MyVector<T>::swap(MyVector& other) {
     // Swap pointers
     T* temp_arr = arr;

@@ -8,6 +8,13 @@ void BinaryProbe::resolve_output() {}
 
 LogicValue BinaryProbe::get_value() { return input_pins[0].getValue(); }
 
-void BinaryProbe::connect(OutputPin* output_pin) { input_pins[0].connect(output_pin); }
 
-void BinaryProbe::disconnect() { input_pins[0].disconnect(); }
+void BinaryProbe::connect_input_pin(int idx, OutputPin* out_pin) { input_pins[0].connect(out_pin); }
+
+void BinaryProbe::disconnect_input_pin(int idx) { input_pins[0].disconnect(); }
+
+OutputPin* BinaryProbe::get_output_pin(int idx) { return nullptr; }
+
+InputPin* BinaryProbe::get_input_pin(int idx) { return &input_pins[0]; }
+
+BinaryProbe* BinaryProbe::clone() { return new BinaryProbe(); }

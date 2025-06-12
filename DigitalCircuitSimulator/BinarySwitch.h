@@ -9,7 +9,11 @@ public:
 	void resolve_output() override;
 	void change_value();
 	LogicValue get_value();
-	OutputPin* getPin();
+	void connect_input_pin(int idx, OutputPin* out_pin) override;
+	void disconnect_input_pin(int idx) override;
+	OutputPin* get_output_pin(int idx) override;
+	InputPin* get_input_pin(int idx) override;
+	BinarySwitch* clone() override;
 };
 
 #endif

@@ -57,6 +57,15 @@
     <ClCompile Include="String.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AND2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OR2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NOT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryProbe.h">
@@ -96,6 +105,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AND2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OR2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NOT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

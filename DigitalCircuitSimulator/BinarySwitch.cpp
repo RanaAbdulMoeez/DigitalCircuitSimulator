@@ -18,6 +18,12 @@ void BinarySwitch::change_value() {
 
 LogicValue BinarySwitch::get_value() { return output_pins[0]->get_value(); }
 
-OutputPin* BinarySwitch::getPin() {
-	return output_pins[0];
-}
+void BinarySwitch::connect_input_pin(int idx, OutputPin* out_pin) {}
+
+void BinarySwitch::disconnect_input_pin(int idx) {}
+
+OutputPin* BinarySwitch::get_output_pin(int idx) {	return output_pins[0]; }
+
+InputPin* BinarySwitch::get_input_pin(int idx) { return nullptr; }
+
+BinarySwitch* BinarySwitch::clone() { return new BinarySwitch(); }

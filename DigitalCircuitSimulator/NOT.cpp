@@ -16,30 +16,16 @@ void NOT::resolve_output() {
     }
 }
 
-void NOT::connect_using_pointer(InputPin* in_pin, OutputPin* out_pin) {
-    for (int i = 0; i < input_pins.size(); i++) {
-        if (in_pin == &input_pins[i]) {
-            input_pins[i].connect(out_pin);
-        }
-    }
-}
-
-void NOT::connect_using_index(int index, OutputPin* out_pin) {
-    input_pins[index].connect(out_pin);
-}
-
-void NOT::disconnect(InputPin* in_pin) {
-    for (int i = 0; i < input_pins.size(); i++) {
-        if (in_pin == &input_pins[i]) {
-            input_pins[i].disconnect();
-        }
-    }
-}
-
 LogicValue NOT::get_value() {
     return output_pins[0]->get_value();
 }
 
-OutputPin* NOT::get_pin() {
-    return output_pins[0];
-}
+void NOT::connect_input_pin(int idx, OutputPin* out_pin) { input_pins[idx].connect(out_pin); }
+
+void NOT::disconnect_input_pin(int idx) { input_pins[idx].disconnect(); }
+
+OutputPin* NOT::get_output_pin(int idx) { return output_pins[0]; }
+
+InputPin* NOT::get_input_pin(int idx) { return &input_pins[0]; }
+
+NOT* NOT::clone() { return new NOT(); }

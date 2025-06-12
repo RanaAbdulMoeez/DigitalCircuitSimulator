@@ -10,12 +10,6 @@ void Wire::resolve_output() {
 	}
 }
 
-OutputPin* Wire::getPin(int idx) { return output_pins[idx]; }
-
-void Wire::connect(OutputPin* pin) { input_pins[0].connect(pin); }
-
-void Wire::disconnect() { input_pins[0].disconnect(); }
-
 void Wire::add_output_Pin() { output_pins.push(new OutputPin()); }
 
 void Wire::remove_output_pin(OutputPin* pin) {
@@ -26,3 +20,18 @@ void Wire::remove_output_pin(OutputPin* pin) {
 		}
 	}
 }
+
+void Wire::connect_input_pin(int idx, OutputPin* out_pin) { input_pins[0].connect(out_pin); }
+
+void Wire::disconnect_input_pin(int idx) { input_pins[0].disconnect(); }
+
+OutputPin* Wire::get_output_pin(int idx) { 
+	if (idx - output_pins.size() == 0) {
+		add_output_Pin();
+	}
+	return output_pins[idx]; 
+}
+
+InputPin* Wire::get_input_pin(int idx) { return &input_pins[0]; }
+
+Wire* Wire::clone() { return new Wire(); }
