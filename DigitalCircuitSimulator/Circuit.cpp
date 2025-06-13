@@ -42,6 +42,7 @@ Circuit::~Circuit() {
 	}
 }
 
+
 void Circuit::resolve_output() {
 	int i = 0;
 	for (; i < components.size(); i++) {

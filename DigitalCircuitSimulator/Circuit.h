@@ -4,7 +4,8 @@
 #include "Wire.h"
 
 class Circuit {
-public:
+private:
+	friend class Simulation;
 	MyVector<MyVector<Component*>> components;
 	MyVector<MyVector<Component*>> wires;
 	int circuitID;

@@ -42,8 +42,8 @@ void Simulation::map_components() {
             binary_switches.push(i);
         }
     }
+
     int circuit_no = 0;
-    circuits.push(Circuit(1));
     MyVector<bool> visited(components.size(), false);
     MyVector<int> queue;
 
@@ -51,6 +51,7 @@ void Simulation::map_components() {
     for (int j = 0; j < binary_switches.size(); j++) {
         if (components[binary_switches[j]]->getID() == -1) {
             circuit_no++;
+            circuits.push(Circuit(circuit_no));
             queue.clear();
             queue.push(binary_switches[j]);
             while (queue.size() > 0) {
@@ -107,17 +108,30 @@ void Simulation::map_components() {
                 }
             } 
         } while (current_comp->get_output_pin(0) != nullptr);
-        if ((current_comp->get_name() != "Wire"))
+        if ((!circuits[circuit_id - 1].check_component(current_comp)) && (current_comp->get_name() != "Wire"))
             circuits[circuit_id - 1].add_component(current_comp, depth);
-        else
+        else if ((!circuits[circuit_id - 1].check_wire(current_comp)) && (current_comp->get_name() == "Wire"))
             circuits[circuit_id - 1].add_wire(current_comp, depth - 1);
+    }
+    for (int i = 0; i < circuits.size(); i++) {
+        for (int j = 0; j < circuits[i].components.size(); j++) {
+            for (int k = 0; k < circuits[i].components[j].size(); k++) {
+                cout << components.find(circuits[i].components[j][k]) << circuits[i].components[j][k]->get_name() << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+        for (int j = 0; j < circuits[i].wires.size(); j++) {
+            for (int k = 0; k < circuits[i].wires[j].size(); k++) {
+                cout << components.find(circuits[i].wires[j][k]) << circuits[i].wires[j][k]->get_name() << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
     }
 }
 
-
-
 void Simulation::resolve_output() {
-    map_components();
     for (int i = 0; i < circuits.size(); i++) {
         circuits[i].resolve_output();
     }

@@ -162,6 +162,7 @@ void Interface::handleRunSimulation() {
         cerr << "Simulator not initialized.\n";
         return;
     }
+    simulator->map_components();
     simulator->resolve_output();
     cout << "Simulation complete. Check probe values.\n";
 }
